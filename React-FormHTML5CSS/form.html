@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="form.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+    class PersonForm extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {sex: 'female', firstName: '', lastname: '', email: '', phone: ''};
+        this.onChangeInput = this.onChangeInput.bind(this);
+      }
+
+      onChangeInput(event) {
+        const name = event.target.name;
+        this.setState({[name]: value});
+      }
+
+      render() {
+        return (
+          <form>
+          <div>
+            <label>First Name:</label>
+            <input name="firstName"  type="text"  value={this.state.firstName} onChange={this.onChangeInput} tabindex="1" required/>
+          </div>
+          <div>
+            <label>Last Name:</label>
+            <input name="lastName"  type="text"  value={this.state.lastName} onChange={this.onChangeInput} disabled="disabled"/>
+          </div>
+          <div>
+            <label> Email: </label>
+            <input name="email"  type="email"  placeholder="Your email" value={this.state.email} onChange={this.onChangeInput} required/>
+          </div>
+          <div>
+            <label> Phone: </label>
+            <input name="phone"  type="tel" value={this.state.phone} placeholder="Your Phone" onChange={this.onChangeInput} required/>
+          </div>
+          <div>
+            <label> Sex: </label>
+            <select name="sex"  value={this.state.sex} onChange={this.onChangeInput}>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+          </div>
+          <div>
+            <label> Checkbox: </label>
+            <input name="checkbox"  type="checkbox" />
+          </div>
+          <div>
+            <label> Radio1: </label>
+            <input name="radio"  type="radio" />
+          </div>
+          <div>
+            <label> Radio2: </label>
+            <input name="radio"  type="radio" />
+          </div>
+          <div>
+            <label> Text: </label>
+            <input name="textarea"  type="textarea" value=""/>
+          </div>
+          <div>
+            <label> Color: </label>
+            <input type="color" name="favcolor" value="#ff0000"/>
+          </div>
+          <div>
+            <label> Range: </label>
+            <input type="range"  value="20" min="0" max="150" step="50" />
+          </div>
+          <div>
+            <label> Download file: </label>
+            <input type="file" name="myFile"/>
+          </div>
+          <div>
+            <label> Password: </label>
+            <input type="password" required />
+          </div>
+          <div>
+            <label> Date: </label>
+            <input type="date"  />
+          </div>
+          <div>
+           <label> Time: </label>
+            <input type="time"  />
+          </div>
+          <div>
+           <label> Submit: </label>
+            <input type="submit"  value="send form" />
+          </div>
+          </form>
+        );
+      }
+    }
+
+
+ReactDOM.render(<PersonForm />,  document.getElementById('root'));
+    </script>
+  </body>
+</html>
